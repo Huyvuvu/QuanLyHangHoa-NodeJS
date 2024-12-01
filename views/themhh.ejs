@@ -1,0 +1,29 @@
+<% include Partials/header.ejs %>
+
+    <div class="container mt-5">
+      <form action="/them" method="post" class="border p-4 shadow" enctype="multipart/form-data">
+        <!--Tên-->
+        <div class="">
+          <label class="form-label">Tên hàng</label>
+          <input class="form-control" type="text" name="txtTen"  required placeholder="Nhập tên hàng"/><br />
+        </div>
+
+       <!--Số lượng-->
+        <div class="">
+          <label class="form-label">Số lượng</label>
+          <input class="form-control" type="number" name="txtSoluong"  required placeholder="Nhập số lượng"/><br />
+        </div>
+
+        <!--Hình-->
+        <div class="">
+          <label class="form-label">Hình sản phẩm</label>
+          <input class="form-control" type="file" name="txtHinh" /><br />
+        </div>
+
+        <!--Button-->
+        <button class="btn btn-primary" type="submit">Thêm</button>
+      </form>
+
+    </div>
+    
+<% include Partials/footer.ejs %>

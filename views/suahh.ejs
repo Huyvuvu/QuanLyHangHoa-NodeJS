@@ -1,0 +1,52 @@
+<% include Partials/header.ejs %>
+
+    <div class="container mt-5">
+      <form action="/sua" method="post" class="border p-4 shadow"  enctype="multipart/form-data">
+        <div class="mb-3">
+
+          <!--ID-->
+          <input type="hidden" value="<%= hh._id%>" name="txtId"> 
+          
+          <!--Tên-->
+          <label for="txtTen" class="form-label">Tên hàng cần sửa</label>
+          <input
+            type="text"
+            class="form-control"
+            name="txtTen"
+            value="<%= hh.tenhh%>"
+            placeholder="Nhập tên hàng"
+            required
+          />
+        </div>
+
+        <!--Số lượng-->
+        <div class="mb-3">
+          <label for="txtSoluong" class="form-label" >Số lượng cần sửa</label>
+          <input
+            type="text"
+            class="form-control"
+            name="txtSoluong"
+            value="<%= hh.soluong%>"
+            placeholder="Nhập số lượng"
+            required
+          />
+        </div>
+
+        <!--Hình-->
+        <div class="mb-3"> 
+          <% if(hh.hinhanh) { %>
+                <img src="/img/<%= hh.hinhanh%>" alt="" width="200px" class="img-thumbnail">
+            <% } else { %>
+                 <img src="/img/nophoto.png" alt="" width="200px" class="img-thumbnail">
+            <% } %>
+        </div>
+        <input type="file" name="txtHinh" class="form-control my-3">
+        <button type="submit" class="btn btn-warning">Sửa</button>
+
+      </form>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<% include Partials/footer.ejs %>

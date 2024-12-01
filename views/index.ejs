@@ -1,0 +1,83 @@
+<% include Partials/header.ejs %>
+
+<% if (typeof thongbao !== "undefined") { %>
+   <h1>Đăng nhập thành công</h1>
+ 
+<% } %>
+
+<div class="container-fluid">
+  <%- messages() %>
+
+  <h1 class="mt-4">Hàng hóa hiện có</h1>
+
+  <table class="table table-hover table-striped">
+    <tr>
+      <th>Tên hàng</th>
+      <th>Số lượng</th>
+      <th>Hình ảnh</th>
+    </tr>
+
+    <% for (hh of dshh) { %>
+
+    <tr>
+      <td><%= hh.tenhh %></td>
+      <td><%= hh.soluong %></td>
+      <td>
+        <% if (hh.hinhanh) { %>
+        <img src="/img/<%=hh.hinhanh%>" alt="" width="100px">
+        <% } else { %>
+        <img src="/img/nophoto.png" alt="" width="100px">
+        <% } %>
+      </td>
+
+      <td>
+        <% if (typeof userId !==  "undefined" ) { %>
+        <a onclick="hoitruockhixoa('<%=hh._id%>')" class="btn btn-danger">Xóa</a>
+        <a class="btn btn-warning " href="/sua/<%=hh._id%>">Sửa</a>
+        <% } %>
+      </td>
+
+    </tr>
+    <% } %>
+  </table>
+
+  <!--phân trang-->
+  <div class="clearfix">
+    <% if (tranghientai > 1) {let page = parseInt(tranghientai) - 1 %>
+    <a href="/<%= page %>" class="btn btn-primary float-left my-3">&larr; Trang trước</a>
+    <% } %>
+    <% if (tranghientai < trangcuoi) {let page = parseInt(tranghientai) + 1 %>
+    <a href="/<%= page %>" class="btn btn-primary float-right my-3">Trang sau &rarr;</a>
+    <% } %>
+  </div>
+
+</div>
+
+<script>
+  function hoitruockhixoa(maso) {
+    Swal.fire({
+      title: "Bạn có muốn xóa không ??",
+      text: "Bạn sẽ không thể phục hổi!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Vâng, Xóa đi!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+            title: "Deleted!",
+            text: "Đã xóa thành công.",
+            icon: "success"
+          })
+          .then(_ => {
+            window.location.href = '/xoa/' + maso
+          })
+      }
+    });
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<% include Partials/footer.ejs %>

@@ -1,0 +1,24 @@
+<% include Partials/header.ejs %>
+
+    <div class="container mt-5">
+      <h1>Đăng nhập</h1>
+      <form action="/dangnhap" method="post" class="border p-4 shadow" enctype="multipart/form-data">
+        <!--Tên-->
+        <div class="">
+          <label class="form-label">Tên tài khoản</label>
+          <input class="form-control" type="text" name="txtTen"  required placeholder="Nhập tên tài khoản"/><br />
+        </div>
+
+       <!--mật khẩu-->
+        <div class="">
+          <label class="form-label">Mật khẩu</label>
+          <input class="form-control" type="password" name="txtMatkhau"  required placeholder="Nhập mật khẩu"/><br />
+        </div>
+
+        <!--Button-->
+        <button class="btn btn-primary" type="submit">Đăng nhập</button>
+      </form>
+
+    </div>
+    
+<% include Partials/footer.ejs %>

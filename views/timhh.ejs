@@ -1,0 +1,15 @@
+<% include Partials/header.ejs %>
+
+    <div class="container mt-5">
+      <h1>Tìm kiếm hàng hóa</h1>
+      <form action="/tim" method="post" class="border p-4 shadow">
+        <div class="mb-3">
+          <label for="txtTen" class="form-label">Tên hàng cần tìm</label>
+          <input type="text"  class="form-control" name="txtTen" placeholder="Nhập tên" required /><br />
+        </div>
+        <button class="btn btn-success" type="submit">Tìm</button>
+      </form>
+    </div>  
+
+
+<% include Partials/footer.ejs %>
